@@ -21,17 +21,28 @@ def UserRoll(ROLL):
     else:
       return False
 
+
+
 def ADD():
+  fh = open("StudentManagement.csv","a")
   os.system("cls")
   print(Fore.LIGHTBLUE_EX+Style.BRIGHT+"----------------------------------- "+Fore.LIGHTGREEN_EX+"ADD STUDENTS"+Fore.LIGHTBLUE_EX+Style.BRIGHT+" -----------------------------------"+Style.RESET_ALL)
   ROLL = input(Fore.LIGHTYELLOW_EX+Style.DIM+"\tRoll_No: "+Style.RESET_ALL)
   if(not Checking(ROLL)):
     u_Roll.append(ROLL)
-    u_Name.append(input(Fore.LIGHTYELLOW_EX+Style.DIM+"\tName: "+Style.RESET_ALL))
-    u_Age.append(input(Fore.LIGHTYELLOW_EX+Style.DIM+"\tAge: "+Style.RESET_ALL))
-    u_Course.append(input(Fore.LIGHTYELLOW_EX+Style.DIM+"\tCourse: "+Style.RESET_ALL))
+    NAME = input(Fore.LIGHTYELLOW_EX+Style.DIM+"\tName: "+Style.RESET_ALL)
+    u_Name.append(NAME)
+    AGE = input(Fore.LIGHTYELLOW_EX+Style.DIM+"\tAge: "+Style.RESET_ALL)
+    u_Age.append(AGE)
+    COURSE = input(Fore.LIGHTYELLOW_EX+Style.DIM+"\tCourse: "+Style.RESET_ALL)
+    u_Course.append(COURSE)
     print('')
     print("New Student is added.",tag='Success',tag_color='green',color='white')
+    
+    record = ROLL + ',' + NAME + ',' + AGE + ',' + COURSE + '\n'
+    fh.write(record)
+    fh.close()
+    
     time.sleep(2)
     os.system("cls")
   else:
